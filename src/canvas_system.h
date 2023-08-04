@@ -17,7 +17,6 @@
 
 #include "standard.h"
 
-
 typedef struct canvas_framework {
 	SDL_Window*	window;
 	SDL_Surface*	surface;

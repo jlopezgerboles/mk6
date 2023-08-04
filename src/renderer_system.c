@@ -46,18 +46,6 @@ SDL_Texture* renderer_framework_create_texture(canvas_framework* canvas, rendere
 }
 
 /* 
- * - Function: renderer_framework_create_color(renderer_framework* renderer).
- * - Returns: Returns color used to initialize the renderer, notice the function clears the renderer with selected color.
- */
-i32 renderer_framework_create_color(renderer_framework* renderer) {
-	i32 color;
-	color = SDL_SetRenderDrawColor(renderer -> renderer, 0, 0, 255, 255);
-	SDL_RenderClear(renderer -> renderer);
-	SDL_RenderPresent(renderer -> renderer);
-	return color;
-}
-
-/* 
  * - Function: renderer_system_initialze().
  * - Returns: Initializes the renderer system.
  */
@@ -65,9 +53,20 @@ renderer_framework* renderer_system_initialize(canvas_framework* canvas) {
 	renderer_framework* renderer;
 	renderer = renderer_framework_create();
 	renderer -> renderer = renderer_framework_create_renderer(canvas);
-	renderer -> texture = renderer_framework_create_texture(canvas, renderer);
-	renderer -> color = renderer_framework_create_color(renderer);
+	//renderer -> texture = renderer_framework_create_texture(canvas, renderer);
 	return renderer;
+}
+
+/* 
+ * - Function: renderer_system_update().
+ * - Returns: Updates the renderer system once per frame.
+ */
+void renderer_system_update(renderer_framework* renderer) {
+        SDL_SetRenderDrawColor(renderer -> renderer, 0, 0, 255, 255);
+        SDL_RenderClear(renderer -> renderer);
+        SDL_SetRenderDrawColor(renderer -> renderer, 0, 255, 255, 255);
+        SDL_RenderDrawPoint(renderer -> renderer, 30, 30);
+        SDL_RenderPresent(renderer -> renderer);
 }
 
 /* 

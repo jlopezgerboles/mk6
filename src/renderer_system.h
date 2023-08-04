@@ -22,7 +22,9 @@ typedef struct renderer_framework {
 	SDL_Renderer*	renderer;
 	SDL_Texture*	texture;
 	i32		color;
+	vec2*		points;
 } renderer_framework;
 
 renderer_framework* renderer_system_initialize(canvas_framework* canvas);
+void renderer_system_update(renderer_framework* renderer);
 void renderer_system_shutdown(renderer_framework* renderer);

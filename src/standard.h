@@ -38,8 +38,8 @@ typedef struct vec2f {
 } vec2f;
 
 typedef struct vec2 {
-	i8 x;
-	i8 y;
+	i32* x;
+	i32* y;
 } vec2;
 
 typedef struct vec3 {
